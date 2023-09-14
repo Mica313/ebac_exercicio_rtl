@@ -7,4 +7,14 @@ describe('Teste para o componente PostComment', () => {
         render(<PostComment/>);
         expect(screen.getByText('Comentar')).toBeInTheDocument();
     });
+    test('deve renderizar dois comentarios', () => {
+        render(<Post />)
+        fireEvent.change(screen.getByTestId('text-comentario'), {
+            target:  {
+                value: 'primeiro comentario'
+            }
+        })
+        fireEvent.click(screen.getByTestId('btn-enviar'))
+        expect(screen.getByText('primeiro comentario')).toBeInTheDocument()
+    })
 });
