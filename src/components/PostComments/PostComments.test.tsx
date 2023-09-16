@@ -15,6 +15,13 @@ describe('Teste para o componente PostComment', () => {
             }
         })
         fireEvent.click(screen.getByTestId('btn-enviar'))
+        fireEvent.change(screen.getByTestId('text-comentario'), {
+            target:  {
+                value: 'segundo comentario'
+            }
+        })
+        fireEvent.click(screen.getByTestId('btn-enviar'))
         expect(screen.getByText('primeiro comentario')).toBeInTheDocument()
+        expect(screen.getByText('segundo comentario')).toBeInTheDocument()
     })
 });
